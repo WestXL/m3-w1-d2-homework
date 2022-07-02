@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Food Blog</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <link rel="preconnect"
+              href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet"
+              href="stylesheets/styles.css">
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body class="container-fluid p-0">
+        <aside id="leftside"
+               class=""></aside>
+        <aside id="rightside"
+               class="float-right"></aside>
+        <div id="container">
+            <div id="navbar"
+                 v-html="nav"></div>
+            <main>
+                <aside id="photos">
+                    <img v-bind:src="source"
+                         alt="White Chicken Chili"
+                         width="180">
+                </aside>
+                <div id="component2">
+                    <mycomponent2>
+                    </mycomponent2>
+                </div>
+                <section id="blogposts">
+                    <ul>
+                        <li v-for="(c, i) in comments"
+                            style="list-style: none">
+                            <img v-bind:src="c.profile"
+                                 v-on:click="showProfile(i)">
+                            <div>{{ c.name }} — {{ c.time }}</div>
+                            <div v-html="c.comment"></div>
+                        </li>
+                    </ul>
+                </section>
+                <button id="disBtn"
+                        type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModalLong"
+                        hidden> Launch demo modal </button>
+                <div class="modal fade"
+                     id="exampleModalLong"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="exampleModalLongTitle"
+                     aria-hidden="true">
+                    <div class="modal-dialog"
+                         role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="modal-title"
+                                     id="exampleModalLongTitle"></div>
+                            </div>
+                            <div id="text"
+                                 class="modal-body"> ... </div>
+                            <div class="modal-footer">
+                                <button type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="fixed-bottom pt-3"> &copy; Copyright FOOD BLOG </footer>
+        </div>
+    </body>
+    <script src="javascripts/vue.js"></script>
+    <!-- Bootstrap jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap Popper -->
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</html>
